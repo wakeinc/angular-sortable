@@ -741,7 +741,6 @@ jQuery(document).ready(function($)  {
                             });
 
                             $element.on('$destroy', function(){
-                                console.log('angular-sortable destroy');
                                 sortable.cleanup();
                             });
                         }
