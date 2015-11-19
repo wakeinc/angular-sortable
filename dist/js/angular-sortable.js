@@ -1,4 +1,4 @@
-(function ($) {
+jQuery(document).ready(function($)  {
     'use strict';
 
     var events = {
@@ -112,7 +112,7 @@
         var $items = context.getItems();
 
         // caching before loop
-        var from = 0, to = $items.length;
+        var from = 0, to = $items.length - 1;
         var item;
 
         var top = parseInt(context.$dragElement.css('top'), 10);
@@ -373,4 +373,4 @@
                     };
                 }]);
 
-}(jQuery));
+});
