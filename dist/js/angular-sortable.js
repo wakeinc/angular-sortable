@@ -1,4 +1,4 @@
-jQuery(document).ready(function($)  {
+(function($) {
     'use strict';
 
     var events = {
@@ -330,6 +330,10 @@ jQuery(document).ready(function($)  {
                                 items = [];
                             }
 
+                            angular.element(document).ready(function () {
+                                $body = $(document.body);
+                            });
+
                             function onChange(fromIdx, toIdx) {
                                 safeApply($scope, function () {
                                     var temp = items.splice(fromIdx, 1);
@@ -366,11 +370,10 @@ jQuery(document).ready(function($)  {
                             });
                             
                             $element.on('$destroy', function(){
-                                console.log('angular-sortable destroy');
                                 sortable.cleanup();
                             });
                         }
                     };
                 }]);
 
-});
+}(jQuery));
