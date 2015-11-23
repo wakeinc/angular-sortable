@@ -324,12 +324,17 @@
                             ngSortableOnDragend: '='
                         },
                         link: function ($scope, $element, $attrs) {
-                            var items = $scope.ngSortable;
+                            var items;
 
-                            if (!items) {
-                                items = [];
+                            function initializeItems() {
+                                items = $scope.ngSortable;
+                                if (!items) {
+                                    items = [];
+                                }
                             }
 
+                            // init
+                            initializeItems();
                             angular.element(document).ready(function () {
                                 $body = $(document.body);
                             });
@@ -365,7 +370,12 @@
                                 sortable.enable(!$scope.ngSortableDisable);
                             });
 
-                            $scope.$watch(function(){ return $('.' + sortable.classes.item, $element).length; }, function () {
+                            $scope.$watch(function(){return $('.' + sortable.classes.item, $element).length; }, function () {
+                                sortable.refresh();
+                            });
+
+                            $scope.$watch(function(){return $scope.ngSortable.length;}, function() {
+                                initializeItems();
                                 sortable.refresh();
                             });
                             
